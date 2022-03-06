@@ -32,17 +32,21 @@ public class LoginHelper {
 
     /**
      * 登出,把redis和cookie中的信息移除掉
+     *
      * @param request
      * @param response
      */
     public static void logout(HttpServletRequest request, HttpServletResponse response) {
+        if (!checkLogin(request, response)) {
+            throw new IllegalStateException("未登录,无法取消登录!");
+        }
         String cookieValue = CookieStoreBrowserHelper.getValue(request);
         if (cookieValue == null) {
             throw new NullPointerException("-----------------cookieValue is null!");
         }
 
         String userId = SessionAndCookieHelper.parseCookieValueToUserId(cookieValue);
-        if (userId == null || userId.trim().length() > 0) {
+        if (userId == null || userId.trim().length() == 0) {
             throw new NullPointerException("-----------------userId is null!");
         }
 

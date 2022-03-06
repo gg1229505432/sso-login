@@ -24,10 +24,10 @@
 </head>
 
 
-
 <body>
 <div style="width: 20%;margin: 20px auto">
     <button onclick="login()">登录</button>
+    <button onclick="logout()">登出</button>
     <button onclick="checkLogin()">检测登录</button>
 </div>
 <hr>
@@ -39,6 +39,19 @@
         $.ajax({
             type: "get",
             url: "/login/login",
+            data: {},
+            cache: false,
+            async: false,
+            success: function (data) {
+
+            }
+        })
+    }
+
+    function logout() {
+        $.ajax({
+            type: "get",
+            url: "/login/logout",
             data: {},
             cache: false,
             async: false,

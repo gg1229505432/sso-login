@@ -1,6 +1,7 @@
-package com.example.unifiedauthentication.helper;
+package com.example.unifiedauthentication.controller;
 
 import com.example.unifiedauthentication.entity.User;
+import com.example.unifiedauthentication.helper.LoginHelper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,13 +30,15 @@ public class LoginController {
 
     }
 
+    @RequestMapping("logout")
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
+        LoginHelper.logout(request, response);
+        System.out.println("登出成功");
+
+    }
     @RequestMapping("checkLogin")
     public void checkLogin(HttpServletRequest request, HttpServletResponse response) {
-        User user = new User<>();
-        user.setUserId(12345);
-        user.setUserName("老王");
-        user.setVersion(UUID.randomUUID().toString().replaceAll("-", ""));
-        user.setCurrentStoreTime(System.currentTimeMillis());
+
         boolean b = LoginHelper.checkLogin(request, response);
         System.out.println("检测登录: " + b);
     }

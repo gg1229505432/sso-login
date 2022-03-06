@@ -1,5 +1,9 @@
 package com.example.unifiedauthentication.conf;
 
+
+/**
+ * 常量名
+ */
 public class Conf {
     /**
      * 做Session连接用的,例如:sso_yenanren_sessionKey#2,防止重复,更好搜索

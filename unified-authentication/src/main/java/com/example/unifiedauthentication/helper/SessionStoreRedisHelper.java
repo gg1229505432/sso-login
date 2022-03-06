@@ -10,9 +10,21 @@ import com.example.unifiedauthentication.utils.JedisUtil;
  */
 public class SessionStoreRedisHelper {
     /**
-     * 默认存在1440分钟,24小时
+     * 默认存在1440分钟,24小时.也可以自己设置,只需要在
      */
-    private static final int redisExpireMinite = 1440;
+    private static int redisExpireMinite = 1440;
+
+    public static void setRedisExpireMinite(int redisExpireMinite) {
+        if (redisExpireMinite < 30) {
+            redisExpireMinite = 30;
+        }
+        SessionStoreRedisHelper.redisExpireMinite = redisExpireMinite;
+    }
+
+    public static int getRedisExpireMinite() {
+        return redisExpireMinite;
+    }
+
 
     /**
      * 构建好sessionKey并且存入redis

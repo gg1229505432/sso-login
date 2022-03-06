@@ -6,9 +6,14 @@ package com.example.unifiedauthentication.conf;
  */
 public class Conf {
     /**
-     * 做Session连接用的,例如:sso_yenanren_sessionKey#2,防止重复,更好搜索
+     * redis存储的key
      */
     public static final String SESSION_KEY = "sso_yenanren_sessionKey";
+    /**
+     * Cookie存储的key
+     */
+    public static final String COOKIE_KEY = "sso_yenanren_cookieKey";
+
     /**
      * 做Session连接用的,例如:sso_yenanren_sessionKey#2
      */

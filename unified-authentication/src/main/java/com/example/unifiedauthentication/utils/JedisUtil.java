@@ -6,7 +6,6 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -43,7 +42,7 @@ public class JedisUtil {
                             config.setMinEvictableIdleTimeMillis(60000L);
 
                             jedisPool = new JedisPool(config, address, port);
-                            log.info("------------Jedis.JedisPool init success");
+                            log.info("------------JedisPool init success!");
                         }
                     } finally {
                         initLock.unlock();
@@ -55,7 +54,7 @@ public class JedisUtil {
         }
 
         if (jedisPool == null) {
-            throw new NullPointerException("--------------Jedis.JedisPool is null");
+            throw new NullPointerException("--------------JedisPool is null!");
         }
         return jedisPool.getResource();
     }

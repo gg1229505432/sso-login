@@ -1,11 +1,18 @@
-package com.example.unifiedauthentication.utils;
+package com.example.unifiedauthentication.helper;
 
+
+import com.example.unifiedauthentication.conf.Conf;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CookieUtil {
+/**
+ * @author yenanren
+ * @date 2022/3/6 0006
+ * @Description 用来存储到浏览器的应用层工具类
+ */
+public class CookieStoreBrowserHelper {
 
     private static final int MAX_EXPIRE = 4320;//默认三天的存在时间
     private static final String DEFAULT_PATH = "/";
@@ -31,12 +38,22 @@ public class CookieUtil {
         response.addCookie(cookie);
     }
 
+    public static String getValue(HttpServletRequest request) {
+        String value = getValue(request, Conf.COOKIE_KEY);
+        return value;
+    }
+
     public static String getValue(HttpServletRequest request, String key) {
         Cookie cookie = get(request, key);
         if (cookie != null) {
             return cookie.getValue();
         }
         return null;
+    }
+
+    public static Cookie get(HttpServletRequest request) {
+        Cookie cookie = get(request, Conf.COOKIE_KEY);
+        return cookie;
     }
 
     public static Cookie get(HttpServletRequest request, String key) {
@@ -49,6 +66,11 @@ public class CookieUtil {
             }
         }
         return null;
+    }
+
+    public static boolean remove(HttpServletRequest request, HttpServletResponse response) {
+        boolean remove = remove(request, response, Conf.COOKIE_KEY);
+        return remove;
     }
 
     public static boolean remove(HttpServletRequest request, HttpServletResponse response, String key) {

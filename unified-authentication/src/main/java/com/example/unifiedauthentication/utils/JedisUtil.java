@@ -271,6 +271,12 @@ public class JedisUtil {
         return null;
     }
 
+    public static void close() throws IOException {
+        if (jedisPool != null) {
+            jedisPool.close();
+        }
+    }
+
     public static void main(String[] args) {
         address = "127.0.0.1";
         port = 6379;

@@ -1,6 +1,5 @@
 package com.example.unifiedauthentication.utils;
 
-import com.example.unifiedauthentication.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.Jedis;
@@ -277,11 +276,6 @@ public class JedisUtil {
         address = "127.0.0.1";
         port = 6379;
         init(address, port);
-        Student student = new Student();
-        final byte[] serialize = serialize(student);
-        System.out.println(Arrays.toString(serialize));
-        String s = "index";
-        System.out.println(s.indexOf("_"));
 //        final long time = System.currentTimeMillis();
 //
 //        for (int i = 0; i < 10000; i++) {

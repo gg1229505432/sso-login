@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 @Data
 public class Student implements Serializable {
+    public static final long serialVersionUID = 42L;
     private String studentName;
     private int sex;
 }

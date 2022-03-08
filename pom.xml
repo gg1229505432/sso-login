@@ -26,7 +26,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <lombok.version>1.18.22</lombok.version>
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
-        <hutool.version>5.7.16</hutool.version>
+        <hutool.version>5.7.22</hutool.version>
         <common.version>0.0.1-SNAPSHOT</common.version>
         <jedis.version>4.1.1</jedis.version>
     </properties>

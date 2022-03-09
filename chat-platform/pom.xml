@@ -7,7 +7,6 @@
         <artifactId>SsoLoginAPI</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <artifactId>chat-platform</artifactId>
 
     <dependencies>
@@ -15,8 +14,18 @@
             <groupId>org.SsoLogin</groupId>
             <artifactId>common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.SsoLogin</groupId>
+            <artifactId>unified-authentication</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.SsoLogin</groupId>
+                    <artifactId>common</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
-
 
 
 </project>

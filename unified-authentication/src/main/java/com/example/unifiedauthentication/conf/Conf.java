@@ -29,7 +29,7 @@ public class Conf {
     /**
      * 在Filter用的,用来getInitParameter中的值,进行下一步拦截操作的
      */
-    public static final String EXCLUDED_PATHS = "excludedPaths";
+    public static final String SSO_EXCLUDED_PATHS = "excludedPaths";
     /**
      * 用于返回login页面
      */

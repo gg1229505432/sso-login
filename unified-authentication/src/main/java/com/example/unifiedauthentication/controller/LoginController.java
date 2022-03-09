@@ -15,33 +15,34 @@ import java.util.UUID;
  * @Description
  */
 @RestController
-@RequestMapping("login")
 public class LoginController {
 
     @RequestMapping("login")
-    public void login(HttpServletResponse response) {
+    public String login(HttpServletResponse response) {
         SsoUser ssoUser = new SsoUser<>();
         ssoUser.setUserId(12345);
         ssoUser.setUserName("老王");
         ssoUser.setVersion(UUID.randomUUID().toString().replaceAll("-", ""));
         ssoUser.setCurrentStoreTime(System.currentTimeMillis());
-        LoginHelper.login(response, ssoUser, false);
+        LoginHelper.login(response, ssoUser, true);
         System.out.println("登陆成功");
-
-
+        return "登录成功";
     }
 
     @RequestMapping("logout")
-    public void logout(HttpServletRequest request, HttpServletResponse response) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         LoginHelper.logout(request, response);
         System.out.println("登出成功");
+        return "登录成功";
 
     }
 
     @RequestMapping("checkLogin")
-    public void checkLogin(HttpServletRequest request, HttpServletResponse response) {
+    public String checkLogin(HttpServletRequest request, HttpServletResponse response) {
         boolean b = LoginHelper.checkLogin(request, response);
         System.out.println("检测登录: " + b);
+        return "检测登录: " + b;
+
     }
 
 }

@@ -23,7 +23,7 @@ import java.io.IOException;
  */
 
 @Slf4j
-public class WebFilter extends HttpServlet implements Filter {
+public class SsoFilter extends HttpServlet implements Filter {
     private String ssoServer;
     private String excludedPaths;
     private static PathMatcher pathMatcher = new AntPathMatcher();
@@ -32,9 +32,9 @@ public class WebFilter extends HttpServlet implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         ssoServer = filterConfig.getInitParameter(Conf.SSO_SERVER);
-        excludedPaths = filterConfig.getInitParameter(Conf.EXCLUDED_PATHS);
+        excludedPaths = filterConfig.getInitParameter(Conf.SSO_EXCLUDED_PATHS);
 
-        log.info("WebFilter init success!");
+        log.info("SsoFilter init success!");
     }
 
     @Override

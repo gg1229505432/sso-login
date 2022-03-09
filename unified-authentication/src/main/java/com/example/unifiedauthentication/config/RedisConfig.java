@@ -1,6 +1,6 @@
 package com.example.unifiedauthentication.config;
 
-import com.example.unifiedauthentication.utils.JedisUtil;
+import com.sso.ssoCore.utils.JedisUtil;
 import lombok.Data;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;

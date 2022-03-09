@@ -1,10 +1,9 @@
 package com.example.unifiedauthentication.controller;
 
-import com.example.unifiedauthentication.entity.SsoUser;
-import com.example.unifiedauthentication.login.LoginHelper;
+import com.sso.ssoCore.entity.SsoUser;
+import com.sso.ssoCore.login.LoginHelper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;

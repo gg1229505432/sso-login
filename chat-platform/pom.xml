@@ -16,14 +16,8 @@
         </dependency>
         <dependency>
             <groupId>org.SsoLogin</groupId>
-            <artifactId>unified-authentication</artifactId>
+            <artifactId>sso-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.SsoLogin</groupId>
-                    <artifactId>common</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 

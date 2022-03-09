@@ -16,29 +16,22 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>sso-core</module>
+        <module>common</module>
         <module>chat-platform</module>
         <module>unified-authentication</module>
-        <module>common</module>
-        <module>sso-core</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <lombok.version>1.18.22</lombok.version>
-        <hutool.version>5.7.22</hutool.version>
         <common.version>0.0.1-SNAPSHOT</common.version>
         <jedis.version>4.1.1</jedis.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -48,11 +41,6 @@
                 <groupId>org.SsoLogin</groupId>
                 <artifactId>common</artifactId>
                 <version>${common.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${jedis.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

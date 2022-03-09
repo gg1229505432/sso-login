@@ -1,8 +1,8 @@
 package com.example.chatplatform.controller;
 
-import com.example.unifiedauthentication.conf.Conf;
-import com.example.unifiedauthentication.entity.SsoUser;
-import com.example.unifiedauthentication.helper.CookieStoreBrowserHelper;
+import com.sso.ssoCore.conf.Conf;
+import com.sso.ssoCore.entity.SsoUser;
+import com.sso.ssoCore.helper.CookieStoreBrowserHelper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +24,7 @@ public class TestController {
 
     @RequestMapping("ha")
     public String ha(HttpServletRequest request) {
-        final SsoUser ssoUser = (SsoUser) request.getAttribute(Conf.SSO_USER);
+        SsoUser ssoUser = (SsoUser) request.getAttribute(Conf.SSO_USER);
         return "8081端口:   " + ssoUser;
     }
 }

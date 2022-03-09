@@ -1,8 +1,8 @@
 package com.example.chatplatform.config;
 
-import com.example.unifiedauthentication.conf.Conf;
-import com.example.unifiedauthentication.filter.SsoFilter;
-import com.example.unifiedauthentication.utils.JedisUtil;
+import com.sso.ssoCore.conf.Conf;
+import com.sso.ssoCore.filter.SsoFilter;
+import com.sso.ssoCore.utils.JedisUtil;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

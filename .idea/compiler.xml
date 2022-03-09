@@ -7,17 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="common" />
         <module name="unified-authentication" />
         <module name="chat-platform" />
+        <module name="sso-core" />
+        <module name="common" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SSOLoginAPI" options="-parameters" />
+      <module name="SsoLoginAPI" options="-parameters" />
       <module name="chat-platform" options="-parameters" />
       <module name="common" options="-parameters" />
+      <module name="sso-core" options="-parameters" />
       <module name="unified-authentication" options="-parameters" />
     </option>
   </component>

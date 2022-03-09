@@ -4,6 +4,7 @@ import com.sso.ssoCore.utils.JedisUtil;
 import lombok.Data;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -17,8 +18,11 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class RedisConfig implements InitializingBean, DisposableBean {
 
-    private String address = "127.0.0.1";
-    private int port = 6379;
+    @Value("${sso.redis.address}")
+    private String address;
+
+    @Value("${sso.redis.port}")
+    private int port;
 
     private int redisExpireMinute;
 

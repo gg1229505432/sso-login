@@ -6,6 +6,8 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -277,6 +279,23 @@ public class JedisUtil {
         }
     }
 
+    private static volatile Map map;
+
+
+    public static void getHa() throws InterruptedException {
+        if (map == null) {
+            if (initLock.tryLock(2L, TimeUnit.SECONDS)) {
+                try {
+                    if (map == null) {
+                        map = new HashMap();
+                    }
+                } finally {
+                    initLock.unlock();
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         address = "127.0.0.1";
         port = 6379;
@@ -290,8 +309,6 @@ public class JedisUtil {
 //            }).start();
 //        }
 //        final long time1 = System.currentTimeMillis();
-
 //        System.out.println(time1 - time);
     }
-
 }

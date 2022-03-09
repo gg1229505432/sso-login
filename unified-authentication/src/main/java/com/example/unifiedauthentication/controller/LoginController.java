@@ -1,13 +1,12 @@
 package com.example.unifiedauthentication.controller;
 
-import com.example.unifiedauthentication.entity.User;
+import com.example.unifiedauthentication.entity.SsoUser;
 import com.example.unifiedauthentication.login.LoginHelper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.reflect.Field;
 import java.util.UUID;
 
 /**
@@ -21,18 +20,13 @@ public class LoginController {
 
     @RequestMapping("login")
     public void login(HttpServletResponse response) {
-        User user = new User<>();
-        user.setUserId(12345);
-        user.setUserName("老王");
-        user.setVersion(UUID.randomUUID().toString().replaceAll("-", ""));
-        user.setCurrentStoreTime(System.currentTimeMillis());
-        LoginHelper.login(response, user, false);
+        SsoUser ssoUser = new SsoUser<>();
+        ssoUser.setUserId(12345);
+        ssoUser.setUserName("老王");
+        ssoUser.setVersion(UUID.randomUUID().toString().replaceAll("-", ""));
+        ssoUser.setCurrentStoreTime(System.currentTimeMillis());
+        LoginHelper.login(response, ssoUser, false);
         System.out.println("登陆成功");
-
-        final Class<? extends User> aClass = user.getClass();
-        final Field[] declaredFields = aClass.getDeclaredFields();
-        final String name = declaredFields[0].getName();
-        final String type = name.substring(0, 1).toUpperCase() + name.substring(1);
 
 
     }

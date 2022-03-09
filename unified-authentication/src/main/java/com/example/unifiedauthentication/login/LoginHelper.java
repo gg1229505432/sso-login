@@ -1,7 +1,7 @@
 package com.example.unifiedauthentication.login;
 
 import com.example.unifiedauthentication.conf.Conf;
-import com.example.unifiedauthentication.entity.User;
+import com.example.unifiedauthentication.entity.SsoUser;
 import com.example.unifiedauthentication.helper.CookieStoreBrowserHelper;
 import com.example.unifiedauthentication.helper.SessionAndCookieHelper;
 import com.example.unifiedauthentication.helper.SessionStoreRedisHelper;
@@ -20,13 +20,13 @@ public class LoginHelper {
      * 登录,如果redis中有数据也会覆盖掉
      *
      * @param response
-     * @param user
+     * @param ssoUser
      * @param ifRemember
      */
-    public static void login(HttpServletResponse response, User user, boolean ifRemember) {
-        SessionStoreRedisHelper.setex(user);
+    public static void login(HttpServletResponse response, SsoUser ssoUser, boolean ifRemember) {
+        SessionStoreRedisHelper.setex(ssoUser);
 
-        String cookieValue = SessionAndCookieHelper.makeCookieValue(user);
+        String cookieValue = SessionAndCookieHelper.makeCookieValue(ssoUser);
         if (cookieValue == null) {
             throw new NullPointerException("-----------------cookieValue is null!");
         }
@@ -72,16 +72,16 @@ public class LoginHelper {
 
         //如果cookies有信息
         String userId = SessionAndCookieHelper.parseCookieValueToUserId(cookieValue);
-        User user = SessionStoreRedisHelper.get(Integer.valueOf(userId));
+        SsoUser ssoUser = SessionStoreRedisHelper.get(Integer.valueOf(userId));
         //如果redis里面还有当前用户信息
-        if (user != null) {
+        if (ssoUser != null) {
             String version = SessionAndCookieHelper.parseCookieValueToVersion(cookieValue);
 
             //如果版本相同,则更新redis的缓存时间,并且刷新当前时间
-            if (version.equals(user.getVersion())) {
-                if (System.currentTimeMillis() - user.getCurrentStoreTime() > SessionStoreRedisHelper.getRedisExpireMinite() / 2) {
-                    user.setCurrentStoreTime(System.currentTimeMillis());
-                    SessionStoreRedisHelper.setex(user);
+            if (version.equals(ssoUser.getVersion())) {
+                if (System.currentTimeMillis() - ssoUser.getCurrentStoreTime() > SessionStoreRedisHelper.getRedisExpireMinite() / 2) {
+                    ssoUser.setCurrentStoreTime(System.currentTimeMillis());
+                    SessionStoreRedisHelper.setex(ssoUser);
                     return true;
                 }
             }

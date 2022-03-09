@@ -82,6 +82,4 @@ public class CookieStoreBrowserHelper {
         }
         return result;
     }
-
-
 }

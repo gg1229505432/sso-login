@@ -1,6 +1,6 @@
 package com.example.unifiedauthentication.helper;
 
-import com.example.unifiedauthentication.entity.User;
+import com.example.unifiedauthentication.entity.SsoUser;
 import com.example.unifiedauthentication.utils.JedisUtil;
 
 /**
@@ -29,11 +29,11 @@ public class SessionStoreRedisHelper {
     /**
      * 构建好sessionKey并且存入redis
      *
-     * @param user
+     * @param ssoUser
      */
-    public static boolean setex(User user) {
-        String sessionKey = SessionAndCookieHelper.makeSessionKey(user.getUserId());
-        return JedisUtil.setex(sessionKey, user, redisExpireMinite * 60);
+    public static boolean setex(SsoUser ssoUser) {
+        String sessionKey = SessionAndCookieHelper.makeSessionKey(ssoUser.getUserId());
+        return JedisUtil.setex(sessionKey, ssoUser, redisExpireMinite * 60);
     }
 
     /**
@@ -42,10 +42,10 @@ public class SessionStoreRedisHelper {
      * @param userId
      * @return
      */
-    public static User get(int userId) {
+    public static SsoUser get(int userId) {
         String sessionKey = SessionAndCookieHelper.makeSessionKey(userId);
-        User user = (User) JedisUtil.getObjectValue(sessionKey);
-        return user;
+        SsoUser ssoUser = (SsoUser) JedisUtil.getObjectValue(sessionKey);
+        return ssoUser;
     }
 
     /**
@@ -69,7 +69,7 @@ public class SessionStoreRedisHelper {
 //        Student student = new Student();
 //        student.setStudentName("王毅");
 //
-//        User<Student> studentUser = new User<>();
+//        SsoUser<Student> studentUser = new SsoUser<>();
 //        studentUser.setDefineUser(student);
 //        studentUser.setUserId(123);
 //        studentUser.setVersion(UUID.randomUUID().toString().replaceAll("-", ""));

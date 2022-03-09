@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @param <T>
  */
 @Data
-public class User<T> implements Serializable {
+public class SsoUser<T> implements Serializable {
     public static final long serialVersionUID = 42L;
     private int userId;
     private String userName;
@@ -19,4 +19,5 @@ public class User<T> implements Serializable {
      * 开发者可以自己定义user
      */
     private T defineUser;
+
 }

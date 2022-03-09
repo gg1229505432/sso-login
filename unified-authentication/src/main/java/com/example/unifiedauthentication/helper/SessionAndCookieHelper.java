@@ -1,7 +1,7 @@
 package com.example.unifiedauthentication.helper;
 
 import com.example.unifiedauthentication.conf.Conf;
-import com.example.unifiedauthentication.entity.User;
+import com.example.unifiedauthentication.entity.SsoUser;
 
 /**
  * @author yenanren
@@ -16,8 +16,8 @@ public class SessionAndCookieHelper {
         return Conf.SESSION_KEY.concat(Conf.SESSION_SYMBOL).concat(String.valueOf(userId));
     }
 
-    public static String makeCookieValue(User user) {
-        return String.valueOf(user.getUserId()).concat(Conf.COOKIE_SYMBOL).concat(user.getVersion());
+    public static String makeCookieValue(SsoUser ssoUser) {
+        return String.valueOf(ssoUser.getUserId()).concat(Conf.COOKIE_SYMBOL).concat(ssoUser.getVersion());
     }
 
     public static String parseCookieValueToUserId(String cookieValue) {

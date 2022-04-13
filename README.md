@@ -36,8 +36,7 @@
 
 - ##### logout()方法
 
-![image-20220413144309292](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220413144309292.png)
-
+![image](https://user-images.githubusercontent.com/87351268/163117354-0410ddcd-0104-49b0-853b-9c443edf34c9.png)
 
 
 

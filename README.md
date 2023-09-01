@@ -15,7 +15,7 @@ Based on the analysis of the repository, here's a breakdown of the architecture,
 | +-------------------+  |
 |                        |
 | +-------------------+  |
-| | Unified Auth      |  |
+| |   Unified Auth    |  |
 | +-------------------+  |
 +------------------------+
             |

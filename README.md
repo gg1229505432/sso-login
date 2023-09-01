@@ -1,4 +1,4 @@
-## SSO单点登录框架
+## SSO single sign-on framework
 
 
 
